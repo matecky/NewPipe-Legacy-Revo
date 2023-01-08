@@ -40,19 +40,15 @@ import io.reactivex.functions.Consumer
 import io.reactivex.functions.Function
 import io.reactivex.processors.PublishProcessor
 import io.reactivex.schedulers.Schedulers
-import java.io.IOException
-import java.util.Calendar
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.AtomicBoolean
-import java.util.concurrent.atomic.AtomicInteger
 import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription
-import org.schabi.newpipe.extractor.ListInfo
-import org.schabi.newpipe.extractor.exceptions.ReCaptchaException
-import org.schabi.newpipe.extractor.stream.StreamInfoItem
+import org.schabi.newpipelegacy.App
 import org.schabi.newpipelegacy.MainActivity.DEBUG
 import org.schabi.newpipelegacy.R
 import org.schabi.newpipelegacy.database.feed.model.FeedGroupEntity
+import org.schabi.newpipe.extractor.ListInfo
+import org.schabi.newpipe.extractor.exceptions.ReCaptchaException
+import org.schabi.newpipe.extractor.stream.StreamInfoItem
 import org.schabi.newpipelegacy.local.feed.FeedDatabaseManager
 import org.schabi.newpipelegacy.local.feed.service.FeedEventManager.Event.ErrorResultEvent
 import org.schabi.newpipelegacy.local.feed.service.FeedEventManager.Event.IdleEvent
@@ -62,12 +58,17 @@ import org.schabi.newpipelegacy.local.feed.service.FeedEventManager.postEvent
 import org.schabi.newpipelegacy.local.subscription.SubscriptionManager
 import org.schabi.newpipelegacy.util.ExceptionUtils
 import org.schabi.newpipelegacy.util.ExtractorHelper
+import java.io.IOException
+import java.util.Calendar
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
 
 class FeedLoadService : Service() {
     companion object {
         private val TAG = FeedLoadService::class.java.simpleName
         private const val NOTIFICATION_ID = 7293450
-        private const val ACTION_CANCEL = "org.schabi.newpipe.local.feed.service.FeedLoadService.CANCEL"
+        private const val ACTION_CANCEL = App.PACKAGE_NAME + ".local.feed.service.FeedLoadService.CANCEL"
 
         /**
          * How often the notification will be updated.

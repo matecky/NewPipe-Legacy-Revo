@@ -1,6 +1,7 @@
 package org.schabi.newpipelegacy.player;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.MenuItem;
 
 import org.schabi.newpipelegacy.R;
@@ -11,6 +12,7 @@ import static org.schabi.newpipelegacy.player.BackgroundPlayer.ACTION_CLOSE;
 public final class BackgroundPlayerActivity extends ServicePlayerActivity {
 
     private static final String TAG = "BackgroundPlayerActivity";
+	private static final boolean DEBUG = BasePlayer.DEBUG;
 
     @Override
     public String getTag() {
@@ -70,4 +72,20 @@ public final class BackgroundPlayerActivity extends ServicePlayerActivity {
     public Intent getPlayerShutdownIntent() {
         return new Intent(ACTION_CLOSE);
     }
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if (DEBUG) {
+			Log.d(TAG, "destroy() called");
+		}
+		/*
+		* Not until we are sure the application main window is actually closed
+		* For further ref:
+		* https://developer.android.com/reference/android/
+		* app/activityManager.RunningAppProcessInfo
+		*
+		* getApplicationContext().sendBroadcast(getPlayerShutdownIntent());
+		*/
+	}
 }

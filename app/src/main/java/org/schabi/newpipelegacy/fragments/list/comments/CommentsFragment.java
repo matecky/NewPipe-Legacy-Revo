@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,11 +29,20 @@ public class CommentsFragment extends BaseListInfoFragment<CommentsInfo> {
 
     private boolean mIsVisibleToUser = false;
 
+    private TextView emptyStateDesc;
+
     public static CommentsFragment getInstance(final int serviceId, final  String url,
                                                final String name) {
         CommentsFragment instance = new CommentsFragment();
         instance.setInitialData(serviceId, url, name);
         return instance;
+    }
+
+    @Override
+    protected void initViews(final View rootView, final Bundle savedInstanceState) {
+        super.initViews(rootView, savedInstanceState);
+
+        emptyStateDesc = rootView.findViewById(R.id.empty_state_desc);
     }
 
     /*//////////////////////////////////////////////////////////////////////////
@@ -91,6 +101,11 @@ public class CommentsFragment extends BaseListInfoFragment<CommentsInfo> {
     @Override
     public void handleResult(@NonNull final CommentsInfo result) {
         super.handleResult(result);
+
+        emptyStateDesc.setText(
+                result.isCommentsDisabled()
+                        ? R.string.comments_are_disabled
+                        : R.string.no_comments);
 
         AnimationUtils.slideUp(getView(), 120, 150, 0.06f);
 
