@@ -1017,7 +1017,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo>
 
     private void prepareDescription(final Description description) {
         if (description == null || TextUtils.isEmpty(description.getContent())
-                || description == Description.emptyDescription) {
+                || description == Description.EMPTY_DESCRIPTION) {
             return;
         }
 
