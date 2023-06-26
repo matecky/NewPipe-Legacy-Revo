@@ -12,7 +12,7 @@
 </p>
 <hr>
 <p align="center"><a href="#screenshots">Screenshots</a> &bull; <a href="#description">Description</a> &bull; <a href="#features">Features</a> &bull; <a href="#installation-and-updates">Installation and updates</a> &bull; <a href="#contribution">Contribution</a> &bull; <a href="#donate">Donate</a> &bull; <a href="#license">License</a></p>
-<p align="center"><a href="https://github.com/ShareASmile/NewPipe">Website</a> &bull; <a href="https://newpipe.net/blog/">Blog</a> &bull; <a href="https://newpipe.net/FAQ/">FAQ</a> &bull; <a href="https://newpipe.net/press/">Press</a></p>
+<p align="center"><a href="https://github.com/ShareASmile/NewPipe-Legacy-Revo">Website</a> &bull; <a href="https://newpipe.net/blog/">Blog</a> &bull; <a href="https://newpipe.net/FAQ/">FAQ</a> &bull; <a href="https://newpipe.net/press/">Press</a></p>
 <hr>
 
 <b>WARNING: THIS IS A BETA VERSION, THEREFORE YOU MAY ENCOUNTER BUGS. IF YOU DO, OPEN AN ISSUE VIA OUR GITHUB REPOSITORY.</b>
@@ -33,7 +33,7 @@
 [<img src="fastlane/metadata/android/en-US/images/tenInchScreenshots/shot_12.png" width=405>](fastlane/metadata/android/en-US/images/tenInchScreenshots/shot_12.png)
 
 ## Description
- This repository contains old preunified v0.19.8 & unified v0.21.2 of [https://github.com/TeamNewPipe/NewPipe-legacy/releases/tag/v0.19.8) with up-to-date [NewPipeExtractor](https://github.com/ShareASmile/NewPipeExtractor/tree/new-legacy) dependency.
+ This repository contains old preunified v0.19.8 & unified v0.21.2 of [NewPipeLegacy](https://github.com/TeamNewPipe/NewPipe-legacy/releases/tag/v0.19.8) with up-to-date [NewPipeExtractor](https://github.com/ShareASmile/NewPipeExtractor/tree/new-legacy) dependency.
 
 The application itself heavily relies on the extractor component which is responsible for proper parsing of various video/audio streams, including Youtube site. The old NewPipe Legacy version 0.19.8 depends on old extractor version which is practically deprecated and can't handle current Youtube (and similar?) streams,thus rendering the application useless for daily use.
 NewPipe Legacy version 0.19.9+ in this repository uses the updated version of NewPipeExtractor for legacy devices and resolves the forementioned issue, thus making it possible to use old NewPipe Legacy version 0.19.8 with some bug fixes & features added along with updated extractor version. You don't need a YouTube account to use NewPipe, it is a copylefted libre software.
@@ -85,19 +85,10 @@ NewPipe supports multiple services. Our [docs](https://teamnewpipe.github.io/doc
 <span id="updates"></span>
 
 ## Installation and updates
-You can install NewPipe using one of the following methods:
- 1. Add our custom repo to F-Droid and install it from there. The instructions are here: https://newpipe.schabi.org/FAQ/tutorials/install-add-fdroid-repo/
- 2. Download the APK from [Github Releases](https://github.com/ShareASmile/NewPipe-Legacy-Revo/releases) and install it.
- 3. Update via F-Droid. This is the slowest method of getting updates, as F-Droid must recognize changes, build the APK itself, sign it, then push the update to users.
- 4. Build a debug APK yourself. This is the fastest way to get new features on your device, but is much more complicated, so we recommend using one of the other methods.
+You can install NewPipe Legacy Revo using one of the following methods:
 
-We recommend method 1 for most users. APKs installed using method 1 or 2 are compatible with each other, but not with those installed using method 3. This is due to the same signing key (ours) being used for 1 and 2, but a different signing key (F-Droid's) being used for 3. Building a debug APK using method 4 excludes a key entirely. Signing keys help ensure that a user isn't tricked into installing a malicious update to an app.
-
-In the meanwhile, if you want to switch sources for some reason (e.g. NewPipe's core functionality was broken and F-Droid doesn't have the update yet), we recommend following this procedure:
-1. Back up your data via Settings > Content > Export Database so you keep your history, subscriptions, and playlists
-2. Uninstall NewPipe
-3. Download the APK from the new source and install it
-4. Import the data from step 1 via Settings > Content > Import Database
+ 1. Download the APK from [Github Releases](https://github.com/ShareASmile/NewPipe-Legacy-Revo/releases) and install it.
+ 2. Build a debug APK yourself. This is the fastest way to get new features on your device, but is much more complicated, so we recommend using one of the other methods.
 
 ## Contribution
 Whether you have ideas, translations, design changes, code cleaning, or real heavy code changes, help is always welcome.
@@ -110,7 +101,7 @@ If you'd like to get involved, check our [contribution notes](.github/CONTRIBUTI
 </a>
 
 ## Donate
-If you like NewPipe we'd be happy about a donation. You can either send bitcoin or donate via Bountysource or Liberapay. For further info on donating to NewPipe, please visit our [website](https://newpipe.net/donate).
+If you like NewPipe we'd be happy about a donation. You can either send bitcoin or donate via Bountysource or Liberapay. For further info on donating to NewPipe, please visit our [upstream](https://newpipe.net/donate).
 
 <table>
   <tr>
