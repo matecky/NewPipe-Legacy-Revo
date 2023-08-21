@@ -14,8 +14,8 @@ android {
         minSdkVersion 16
 		//noinspection ExpiredTargetSdkVersion
         targetSdkVersion 29
-        versionCode 108
-        versionName "0.19.9.2"
+        versionCode 109
+        versionName "0.19.9.3"
 
         multiDexEnabled true
 
@@ -177,8 +177,7 @@ dependencies {
     // name and the commit hash with the commit hash of the (pushed) commit you want to test
     // This works thanks to JitPack: https://jitpack.io/
 	implementation "com.github.TeamNewPipe:nanojson:1d9e1aea9049fc9f85e68b43ba39fe7be1c1f751"
-	//implementation 'com.github.ShareASmile:NewPipeExtractor:v0.22.5.1'
-    implementation 'com.github.ShareASmile:NewPipeExtractor:5c87088b7b'
+	implementation 'com.github.ShareASmile:NewPipeExtractor:v0.22.5.3'
 
     implementation "org.jsoup:jsoup:1.13.1"
 
