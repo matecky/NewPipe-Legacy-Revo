@@ -2,12 +2,12 @@ package org.schabi.newpipelegacy.database.stream
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
-import java.util.Date
 import org.schabi.newpipe.extractor.stream.StreamInfoItem
 import org.schabi.newpipelegacy.database.LocalItem
 import org.schabi.newpipelegacy.database.history.model.StreamHistoryEntity
 import org.schabi.newpipelegacy.database.stream.model.StreamStateEntity.STREAM_PROGRESS_TIME
 import org.schabi.newpipelegacy.database.stream.model.StreamEntity
+import java.util.Date
 
 class StreamStatisticsEntry(
     @Embedded
