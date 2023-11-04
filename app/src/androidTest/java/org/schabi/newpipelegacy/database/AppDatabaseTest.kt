@@ -32,7 +32,7 @@ class AppDatabaseTest {
 
     @get:Rule
     val testHelper = MigrationTestHelper(
-	InstrumentationRegistry.getInstrumentation(),
+        InstrumentationRegistry.getInstrumentation(),
         AppDatabase::class.java.canonicalName, FrameworkSQLiteOpenHelperFactory()
     )
 
