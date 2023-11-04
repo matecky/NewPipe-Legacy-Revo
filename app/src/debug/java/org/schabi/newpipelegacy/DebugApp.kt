@@ -10,21 +10,28 @@ import okhttp3.OkHttpClient
 import org.schabi.newpipe.extractor.downloader.Downloader
 
 class DebugApp : App() {
-
     override fun onCreate() {
         super.onCreate()
         initStetho()
 
         // Give each object 10 seconds to be GC'ed, before LeakCanary gets nosy on it
         AppWatcher.config = AppWatcher.config.copy(watchDurationMillis = 10000)
-        LeakCanary.config = LeakCanary.config.copy(dumpHeap = PreferenceManager
-                .getDefaultSharedPreferences(this).getBoolean(getString(
-                        R.string.allow_heap_dumping_key), false))
+        LeakCanary.config = LeakCanary.config.copy(
+	    dumpHeap = PreferenceManager
+                .getDefaultSharedPreferences(this).getBoolean(
+                    getString(
+                        R.string.allow_heap_dumping_key
+                    ),
+                    false
+                )
+        )
     }
 
     override fun getDownloader(): Downloader {
-        val downloader = DownloaderImpl.init(OkHttpClient.Builder()
-                .addNetworkInterceptor(StethoInterceptor()))
+        val downloader = DownloaderImpl.init(
+            OkHttpClient.Builder()
+                .addNetworkInterceptor(StethoInterceptor())
+        )
         setCookiesToDownloader(downloader)
         return downloader
     }
@@ -44,7 +51,8 @@ class DebugApp : App() {
 
         // Enable command line interface
         initializerBuilder.enableDumpapp(
-                Stetho.defaultDumperPluginsProvider(applicationContext))
+            Stetho.defaultDumperPluginsProvider(applicationContext)
+		)
 
         // Use the InitializerBuilder to generate an Initializer
         val initializer = initializerBuilder.build()
@@ -55,6 +63,6 @@ class DebugApp : App() {
 
     override fun isDisposedRxExceptionsReported(): Boolean {
         return PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean(getString(R.string.allow_disposed_exceptions_key), false)
+            .getBoolean(getString(R.string.allow_disposed_exceptions_key), false)
     }
 }
