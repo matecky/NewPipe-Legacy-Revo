@@ -14,12 +14,12 @@ import androidx.annotation.Nullable;
 
 import org.schabi.newpipelegacy.R;
 import org.schabi.newpipe.extractor.ListExtractor;
-import org.schabi.newpipe.extractor.NewPipe;
 import org.schabi.newpipe.extractor.comments.CommentsInfo;
 import org.schabi.newpipelegacy.fragments.list.BaseListInfoFragment;
 import org.schabi.newpipelegacy.report.UserAction;
 import org.schabi.newpipelegacy.util.AnimationUtils;
 import org.schabi.newpipelegacy.util.ExtractorHelper;
+import org.schabi.newpipelegacy.util.ServiceHelper;
 
 import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
@@ -111,7 +111,7 @@ public class CommentsFragment extends BaseListInfoFragment<CommentsInfo> {
 
         if (!result.getErrors().isEmpty()) {
             showSnackBarError(result.getErrors(), UserAction.REQUESTED_COMMENTS,
-                    NewPipe.getNameOfService(result.getServiceId()), result.getUrl(), 0);
+                    ServiceHelper.getNameOfServiceById(result.getServiceId()), result.getUrl(), 0);
         }
 
         if (disposables != null) {
@@ -125,7 +125,7 @@ public class CommentsFragment extends BaseListInfoFragment<CommentsInfo> {
 
         if (!result.getErrors().isEmpty()) {
             showSnackBarError(result.getErrors(), UserAction.REQUESTED_COMMENTS,
-                    NewPipe.getNameOfService(serviceId), "Get next page of: " + url,
+                    ServiceHelper.getNameOfServiceById(serviceId), "Get next page of: " + url,
                     R.string.general_error);
         }
     }
@@ -142,7 +142,8 @@ public class CommentsFragment extends BaseListInfoFragment<CommentsInfo> {
 
         hideLoading();
         showSnackBarError(exception, UserAction.REQUESTED_COMMENTS,
-                NewPipe.getNameOfService(serviceId), url, R.string.error_unable_to_load_comments);
+                ServiceHelper.getNameOfServiceById(serviceId),
+                url, R.string.error_unable_to_load_comments);
         return true;
     }
 

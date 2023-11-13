@@ -743,7 +743,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
                             .onErrorReturn(throwable -> {
                                 if (!ExceptionUtils.isNetworkRelated(throwable)) {
                                     showSnackBarError(throwable, UserAction.GET_SUGGESTIONS,
-                                            NewPipe.getNameOfService(serviceId), searchString, 0);
+                                            ServiceHelper.getNameOfServiceById(serviceId), searchString, 0);
                                 }
                                 return new ArrayList<>();
                             })
@@ -838,7 +838,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
                         ignored -> {
                         },
                         error -> showSnackBarError(error, UserAction.SEARCHED,
-                                NewPipe.getNameOfService(serviceId), theSearchString, 0)
+                                ServiceHelper.getNameOfServiceById(serviceId), theSearchString, 0)
                 ));
         suggestionPublisher.onNext(theSearchString);
         startLoading(false);
@@ -948,7 +948,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
                 ? R.string.parsing_error
                 : R.string.general_error;
         onUnrecoverableError(exception, UserAction.GET_SUGGESTIONS,
-                NewPipe.getNameOfService(serviceId), searchString, errorId);
+                ServiceHelper.getNameOfServiceById(serviceId), searchString, errorId);
     }
 
     /*//////////////////////////////////////////////////////////////////////////
@@ -979,7 +979,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
                 && !(exceptions.size() == 1
                 && exceptions.get(0) instanceof SearchExtractor.NothingFoundException)) {
             showSnackBarError(result.getErrors(), UserAction.SEARCHED,
-                    NewPipe.getNameOfService(serviceId), searchString, 0);
+                    ServiceHelper.getNameOfServiceById(serviceId), searchString, 0);
         }
 
         searchSuggestion = result.getSearchSuggestion();
@@ -1042,7 +1042,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
 
         if (!result.getErrors().isEmpty()) {
             showSnackBarError(result.getErrors(), UserAction.SEARCHED,
-                    NewPipe.getNameOfService(serviceId),
+                    ServiceHelper.getNameOfServiceById(serviceId),
                     "\"" + searchString + "\" → pageUrl: " + nextPage.getUrl() + ", "
                             + "pageIds: " + nextPage.getIds() + ", "
                             + "pageCookies: " + nextPage.getCookies(), 0);
@@ -1064,7 +1064,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
                     ? R.string.parsing_error
                     : R.string.general_error;
             onUnrecoverableError(exception, UserAction.SEARCHED,
-                    NewPipe.getNameOfService(serviceId), searchString, errorId);
+                    ServiceHelper.getNameOfServiceById(serviceId), searchString, errorId);
         }
 
         return true;

@@ -85,6 +85,7 @@ import org.schabi.newpipelegacy.util.ListHelper;
 import org.schabi.newpipelegacy.util.Localization;
 import org.schabi.newpipelegacy.util.NavigationHelper;
 import org.schabi.newpipelegacy.util.PermissionHelper;
+import org.schabi.newpipelegacy.util.ServiceHelper;
 import org.schabi.newpipelegacy.util.ShareUtils;
 import org.schabi.newpipelegacy.util.StreamItemAdapter;
 import org.schabi.newpipelegacy.util.StreamItemAdapter.StreamSizeWrapper;
@@ -620,7 +621,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo>
     private void initThumbnailViews(@NonNull final StreamInfo info) {
         thumbnailImageView.setImageResource(R.drawable.dummy_thumbnail_dark);
         if (!TextUtils.isEmpty(info.getThumbnailUrl())) {
-            final String infoServiceName = NewPipe.getNameOfService(info.getServiceId());
+            final String infoServiceName = ServiceHelper.getNameOfServiceById(info.getServiceId());
             final ImageLoadingListener onFailListener = new SimpleImageLoadingListener() {
                 @Override
                 public void onLoadingFailed(final String imageUri, final View view,
@@ -1273,7 +1274,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo>
             if (!info.getErrors().isEmpty()) {
                 showSnackBarError(info.getErrors(),
                         UserAction.REQUESTED_STREAM,
-                        NewPipe.getNameOfService(info.getServiceId()),
+                        ServiceHelper.getNameOfServiceById(info.getServiceId()),
                         info.getUrl(),
                         0);
             }
@@ -1375,7 +1376,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo>
                         : R.string.general_error;
 
         onUnrecoverableError(exception, UserAction.REQUESTED_STREAM,
-                NewPipe.getNameOfService(serviceId), url, errorId);
+                ServiceHelper.getNameOfServiceById(serviceId), url, errorId);
 
         return true;
     }

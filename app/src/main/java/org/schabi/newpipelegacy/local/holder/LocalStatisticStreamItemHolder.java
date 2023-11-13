@@ -11,12 +11,12 @@ import androidx.core.content.ContextCompat;
 import org.schabi.newpipelegacy.R;
 import org.schabi.newpipelegacy.database.LocalItem;
 import org.schabi.newpipelegacy.database.stream.StreamStatisticsEntry;
-import org.schabi.newpipe.extractor.NewPipe;
 import org.schabi.newpipelegacy.local.LocalItemBuilder;
 import org.schabi.newpipelegacy.local.history.HistoryRecordManager;
 import org.schabi.newpipelegacy.util.AnimationUtils;
 import org.schabi.newpipelegacy.util.ImageDisplayConstants;
 import org.schabi.newpipelegacy.util.Localization;
+import org.schabi.newpipelegacy.util.ServiceHelper;
 import org.schabi.newpipelegacy.views.AnimatedProgressBar;
 
 import java.text.DateFormat;
@@ -73,7 +73,9 @@ public class LocalStatisticStreamItemHolder extends LocalItemHolder {
         final String watchCount = Localization
                 .shortViewCount(itemBuilder.getContext(), entry.getWatchCount());
         final String uploadDate = dateFormat.format(entry.getLatestAccessDate());
-        final String serviceName = NewPipe.getNameOfService(entry.getStreamEntity().getServiceId());
+        final String serviceName = ServiceHelper.getNameOfServiceById(
+                entry.getStreamEntity().getServiceId()
+        );
         return Localization.concatenateStrings(watchCount, uploadDate, serviceName);
     }
 
