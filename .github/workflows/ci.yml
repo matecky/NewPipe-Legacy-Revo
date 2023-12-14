@@ -6,11 +6,8 @@ on:
     branches:
       - dev
       - develop
-      - main
-      - master
-      - legacy-revo
-      - legacy-0.21.1
-      - legacy-0.19.8
+      - revo
+      - toss
       - legacy-4.0
     paths-ignore:
       - 'README.md'
@@ -23,11 +20,8 @@ on:
     branches:
       - dev
       - develop
-      - main
-      - master
-      - legacy-revo
-      - legacy-0.21.1
-      - legacy-0.19.8
+      - revo
+      - toss
       - legacy-4.0
     paths-ignore:
       - 'README.md'
