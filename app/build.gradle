@@ -99,7 +99,7 @@ ext {
     exoPlayerVersion = '2.18.7'
     androidxLifecycleVersion = '2.2.0'
     androidxRoomVersion = '2.2.5'
-    groupieVersion = '2.8.1'
+    groupieVersion = '2.10.1'
     markwonVersion = '4.6.0'
 	googleAutoServiceVersion = '1.0-rc7'
 }
